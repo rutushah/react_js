@@ -3,13 +3,23 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
+export default function CounterApp() {
+
+  let [CounterVisible, setVisible] = useState(true);
+
+  useEffect(function(){
+    setInterval(function(){
+      setVisible(c => !c)
+    },5000);
+    },[])
+
   return (
     <div>
-      <b> 
+      
         Hi there
-      </b>
-      <Counter> </Counter>
+     
+      <div style={{visibility:CounterVisible ? "hidden" : "visible"}}> <Counter>  </Counter> </div>
+      
       </div>
   )
 }
@@ -19,16 +29,21 @@ function Counter(){
   //converting the count variable to a state variable using the useState hook
   const [count, setCount] = useState(0)
 
-  console.log("count: ")
-
   //to increase the count, every one second, we can use the setInterval function to call the increaseCount function every 1000 milliseconds (1 second)
   useEffect( function () {
-    setInterval(function(){
+    console.log("useEffect called")
+    let clock = setInterval(function(){
+      console.log("setInterval called")
       setCount(function(currentValue){
         return currentValue + 1;
       })
-    },1000)
-    console.log("useEffect called")
+    },1000);
+    //logic for unmounting
+    return function () {
+      clearInterval(clock);
+      console.log("clock cleared")
+    }
+
   },[]);
 
 
@@ -62,4 +77,4 @@ function Counter(){
   )
 }
 
-export default App
+
