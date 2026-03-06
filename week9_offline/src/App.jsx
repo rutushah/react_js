@@ -1,34 +1,44 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <PostComponent />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
+  )
+}
+
+const style = {
+  width: '400px',
+  backgroundColor: 'white',
+  borderRadius: '10px',
+  border: '1px solid gray',
+  display: 'flex',
+  gap: '10px',
+  padding: '10px',
+  color: 'black'
+}
+
+function PostComponent() {
+  return (
+    <div style={style}>
+      <img 
+        src="https://media.licdn.com/dms/image/v2/D5603AQE3Izpap56JrQ/profile-displayphoto-scale_100_100/B56ZxouBamH0Ag-/0/1771283437375?e=1774483200&v=beta&t=pndDDRoiqRrAI8ojN1MQrAwGy8wua0zNHOPb0vKKHGI"
+        style={{width: '20px', height: '20px', borderRadius: '50%'}}
+      />
+
+      <div>
+        <b>100xdevs</b>
+        <div>23,888 followers</div>
+        <div>12m</div>
+        <div>
+          Want to know how to win big? Check out our latest article on how to win big in the world of tech!
+        </div>
+      </div>
+    </div>
   )
 }
 
