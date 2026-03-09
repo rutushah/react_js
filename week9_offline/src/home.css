@@ -1,0 +1,149 @@
+.container {
+    background-color: #f3f2ef;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 24px;
+  }
+  
+  .leftSection {
+    width: 260px;
+  }
+  
+  .feedSection {
+    width: 420px;
+  }
+  
+  .cardStyle {
+    width: 100%;
+    background-color: white;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    color: black;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+  
+  .headerStyle {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  
+  .profileImg {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .nameText {
+    font-weight: bold;
+  }
+  
+  .subText {
+    font-size: 12px;
+    color: gray;
+  }
+  
+  .timeText {
+    font-size: 11px;
+    color: gray;
+  }
+  
+  .description {
+    font-size: 12px;
+    margin-top: 10px;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  .profileCard {
+    width: 100%;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+  
+  .profileBanner {
+    height: 70px;
+    background-image: url("https://media.licdn.com/dms/image/v2/D5616AQH538WDToRPhA/profile-displaybackgroundimage-shrink_200_800/B56Zxo6OxyHEAU-/0/1771286621962?e=1774483200&v=beta&t=54Rn6PxdH3k0BI5PXvWiPNk9PiXnF6Hofv8Wmlam7GI");
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .profileContent {
+    position: relative;
+    padding: 16px;
+    text-align: left;
+  }
+  
+  .profilePhotoLarge {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 3px solid white;
+    object-fit: cover;
+    position: absolute;
+    top: -36px;
+    left: 16px;
+  }
+  
+  .profileName {
+    margin-top: 40px;
+    margin-bottom: 4px;
+    font-size: 14px;
+    color: #444;
+  }
+  
+  .profileText {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.4;
+  }
+  
+  .locationText {
+    margin-top: 8px;
+    font-size: 13px;
+    color: gray;
+  }
+  
+  .companyText {
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .viewersCard {
+    font-size: 14px;
+  }
+  
+  .viewerRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .premiumCard{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .premiumText{
+    font-size: 13px;
+    color: #666;
+  }
+  
+  .premiumButton{
+    font-size: 14px;
+    font-weight: 600;
+    color: #915907;
+    cursor: pointer;
+  }
+ 
