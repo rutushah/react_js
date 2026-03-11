@@ -146,4 +146,27 @@
     color: #915907;
     cursor: pointer;
   }
- 
+  .notificationBar{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  
+  .notificationIcon{
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+  }
+  
+  .notificationBadge{
+    background-color: red;
+    color: white;
+    font-size: 11px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
