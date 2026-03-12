@@ -5,11 +5,22 @@ import { ProfileComponent, ProfileViewers, PremiumAdvertisement } from './SideBa
 import React from 'react';
 import ToggleMessage from './Notification';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 function App() {
 
   //adding post on button click using useState hook
   const [posts, setPosts] = useState([]);
+  let [count, setCount] = useState(0);
+  let [count2, setCount2] = useState(0);
+  const [currentTab, setCurrentTab] = useState("Feed");
+
+
+  //defining useEffect for tabs
+  useEffect(() => {
+    console.log("Send request to backend to get data for tab is " + currentTab);
+  }, [currentTab])
+
 
   const PostComponents = posts.map(post => <PostComponent
   name = {post.name}
@@ -29,14 +40,31 @@ function App() {
     }])
   }
 
-  let [count, setCount] = useState(0);
-
   function increment() {
-    setCount(count + 1);
+    setCount(function(currentCount){
+      console.log("Calling increased count every 1 second" + currentCount);
+      return currentCount + 1;
+    });
   }
 
-  setInterval(increment, 5000);
 
+  function decrement() {
+    setCount(function(currentCount){
+      console.log("Calling increased count every 1 second" + currentCount);
+      return currentCount - 1;
+    });
+  }
+
+  // useEffect(() => {
+  //   console.log("Above setInterval");
+  //   setInterval(increment, 5000);
+  //   setInterval(decrement, 10000);
+  // },[])
+  
+
+  // useEffect(() => {
+  //   console.log("The count value has been updated to " + count);
+  // }, [count, count2])
 
   return (
     <div className="container">
@@ -60,10 +88,37 @@ function App() {
         <div className="notificationBadge">{count}</div>
 
         <img
-          className="notificationIcon"
+          className="notificationIcon" style={{color:currentTab == "Feed" ? "red" : "black"}}
           src="https://media.istockphoto.com/id/1598038956/vector/bell-icon-vector-illustration-symbol.jpg?s=612x612&w=0&k=20&c=Ly_vjHmtbwhlsuCl8YkGqZ6zkOJKH03D_BhDY89Qzdg="
           alt="notification_icon"
         />
+
+<button
+            onClick={() => setCurrentTab("Feed")}
+            style={{ color: currentTab === "Feed" ? "red" : "black" }}
+          >
+            Feed
+          </button>
+
+          <button
+            onClick={() => setCurrentTab("Messages")}
+            style={{ color: currentTab === "Messages" ? "red" : "black" }}
+          >
+            Messages
+          </button>
+
+          <button
+            onClick={() => setCurrentTab("Jobs")}
+            style={{ color: currentTab === "Jobs" ? "red" : "black" }}
+          >
+            Jobs
+          </button>
+        {/* </div> */}
+
+
+       
+
+
       </div>
       {[
         PostComponents
