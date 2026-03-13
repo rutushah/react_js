@@ -13,12 +13,22 @@ function App() {
   const [posts, setPosts] = useState([]);
   let [count, setCount] = useState(0);
   let [count2, setCount2] = useState(0);
-  const [currentTab, setCurrentTab] = useState("Feed");
+  const [currentTab, setCurrentTab] = useState(1);
+  const [tabData, setTabData] = useState({});
+  const [loading, setLoading] = useState(true);
+
 
 
   //defining useEffect for tabs
   useEffect(() => {
+    setLoading(true);
     console.log("Send request to backend to get data for tab is " + currentTab);
+    fetch("https://jsonplaceholder.typicode.com/todos/" + currentTab )
+    .then(async res =>{
+      const json = await res.json();
+      setTabData(json);
+      setLoading(false);
+    })
   }, [currentTab])
 
 
@@ -94,36 +104,43 @@ function App() {
         />
 
 <button
-            onClick={() => setCurrentTab("Feed")}
-            style={{ color: currentTab === "Feed" ? "red" : "black" }}
+            onClick={() => setCurrentTab(1)}
+            style={{ color: currentTab === 1 ? "red" : "black" }}
           >
-            Feed
+            Todo #1 
           </button>
 
           <button
-            onClick={() => setCurrentTab("Messages")}
-            style={{ color: currentTab === "Messages" ? "red" : "black" }}
+            onClick={() => setCurrentTab(2)}
+            style={{ color: currentTab === 2 ? "red" : "black" }}
           >
-            Messages
+         Todo # 2
           </button>
 
           <button
-            onClick={() => setCurrentTab("Jobs")}
-            style={{ color: currentTab === "Jobs" ? "red" : "black" }}
+            onClick={() => setCurrentTab(3)}
+            style={{ color: currentTab === 3 ? "red" : "black" }}
           >
-            Jobs
+            Todo # 3
+          </button>
+
+          <button
+            onClick={() => setCurrentTab(4)}
+            style={{ color: currentTab === 4 ? "red" : "black" }}
+          >
+            Todo # 4
           </button>
         {/* </div> */}
-
-
-       
-
-
+        <br/>
       </div>
+
+      <div className="tabTitle">
+          <h3>{loading? "LOADING..." : tabData.title}</h3>
+        </div>
+
       {[
         PostComponents
       ]}  
-       
       </div>
     </div>
   )

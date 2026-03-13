@@ -187,3 +187,20 @@
   .notificationBar button:hover {
     background-color: #f3f2ef;
   }
+  .tabTitle {
+    background-color: white;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    min-height: 60px;
+    color: black;
+  }
+  
+  .tabTitle h3 {
+    margin: 0;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+  }
