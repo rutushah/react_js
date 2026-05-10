@@ -1,42 +1,48 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
-import {Button} from './components/button'
-import { Input } from './components/Input'
-import {OTP} from './components/OTP'
+import {SideBar} from './components/SideBar'
+import {MainContent} from './components/MainContent'
+
+const useMediaQuery = (query) => {
+    const [matches, setMatches] = useState(false);
+
+    useEffect(() => {
+        const media = window.matchMedia(query);
+        if (media.matches !== matches) {
+            setMatches(media.matches);
+        }
+        const listener = () => setMatches(media.matches);
+        media.addListener(listener);
+        return () => media.removeListener(listener);
+    }, [matches, query]);
+
+    return matches;
+}
 
 function App() {
-
-
-  return (
-    <>
-
-     {/* <div className='flex justify-between grid grid-cols-3 sm:grid-cols-12'>
-      <div className='md:bg-blue-300 sm:bg-purple-300 bg-yellow-400 sm:col-span-4 col-span-4 text-5xl'>Child 1</div>
-      <div className='md:bg-red-300 sm:bg-purple-300 bg-yellow-400 sm:col-span-6 col-span-4'> Child 2</div>
-      <div className='md:bg-green-300 sm:bg-purple-300 bg-yellow-400 sm:col-span-2 col-span-4'>Child 3</div>
-     </div> */}
-
-
-     <div className="bg-sky-950 min-h-screen">
+    const[sidebarOpen, setSidebarOpen] = useState(true)
+    const isDesktop = useMediaQuery("(min-width: 768px)")
     
-          <Input type="text" placeholder="User Name"></Input>
-          <br />
-          <br /><br />
-          
-          <br />
-          <br /><br />
-          <OTP />
-          <Button disabled={false}> Continue </Button>
+
+    useEffect(() => {
+        if(isDesktop == false){
+            setSidebarOpen(false)
+        }else{
+            setSidebarOpen(true)
+        }
+    }, [isDesktop])
+
+    return (
+        <div className="flex">
+            <SideBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}/>
+            <MainContent sidebarOpen={sidebarOpen}/>
         </div>
-
-      
-
-     
-    </>
-  )
+    ) 
 }
+
+
 
 export default App
